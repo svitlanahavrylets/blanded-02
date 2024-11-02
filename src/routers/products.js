@@ -9,4 +9,6 @@ productsRouter.get(
   '/:productId',
   ctrlWrapper(productController.getProductByIdController),
 );
+productsRouter.post('/', ctrlWrapper(productController.postProductsController));
+
 export default productsRouter;

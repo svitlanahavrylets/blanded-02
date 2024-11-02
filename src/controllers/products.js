@@ -24,3 +24,13 @@ export const getProductByIdController = async (req, res) => {
     data: product,
   });
 };
+
+export const postProductsController = async (req, res) => {
+  // console.log(req.body);
+  const data = await productServices.postProducts(req.body);
+    res.status(201).json({
+      status: 201,
+      message: 'Successfully created a product!',
+      data,
+    });
+};
