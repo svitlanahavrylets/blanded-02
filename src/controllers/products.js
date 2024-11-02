@@ -28,9 +28,21 @@ export const getProductByIdController = async (req, res) => {
 export const postProductsController = async (req, res) => {
   // console.log(req.body);
   const data = await productServices.postProducts(req.body);
-    res.status(201).json({
-      status: 201,
-      message: 'Successfully created a product!',
-      data,
-    });
+  res.status(201).json({
+    status: 201,
+    message: 'Successfully created a product!',
+    data,
+  });
+};
+
+export const patchProductsController = async (req, res) => {
+  // console.log(req.body);
+  const { productId } = req.params;
+  const data = await productServices.patchProducts(productId, req.body);
+  if (!data) throw createHttpError(404, 'product not found');
+  res.json({
+    status: 200,
+    message: 'Successfully update a product!',
+    data,
+  });
 };

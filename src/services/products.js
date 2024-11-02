@@ -6,3 +6,5 @@ export const getProductById = (productId) => {
   return product;
 };
 export const postProducts = (body) => ProductsCollection.create(body);
+export const patchProducts = (productId, body) =>
+  ProductsCollection.findOneAndUpdate({ _id: productId }, body, { new: true });
