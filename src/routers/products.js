@@ -11,4 +11,9 @@ productsRouter.get(
 );
 productsRouter.post('/', ctrlWrapper(productController.postProductsController));
 
+productsRouter.patch(
+  '/:productId',
+  ctrlWrapper(productController.patchProductsController),
+);
+
 export default productsRouter;
