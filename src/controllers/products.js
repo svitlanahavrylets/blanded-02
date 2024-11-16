@@ -1,8 +1,15 @@
 import createHttpError from 'http-errors';
 import * as productServices from '../services/products.js';
+import { parseFilterParams } from '../utils/parseFilterParams.js';
 
 export const getProductsController = async (req, res) => {
-  const data = await productServices.getProducts();
+  // console.log(`query`, req.query);
+
+const filterQuery = parseFilterParams(req.query);
+// console.log(`filterQuery`, filterQuery);
+
+
+  const data = await productServices.getProducts(filterQuery);
 
   res.json({
     status: 200,
